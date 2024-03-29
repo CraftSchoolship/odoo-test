@@ -5,10 +5,11 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  VERSION: '16'
+  VERSION: '16-sat'
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
+    if: startsWith(github.event.head_commit.message, 'release')
     permissions:
       contents: read
       packages: write

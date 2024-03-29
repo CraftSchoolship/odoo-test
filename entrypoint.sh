@@ -28,7 +28,7 @@ info "** Odoo setup finished! **"
 echo ""
 
 declare cmd="${ODOO_BASE_DIR}/bin/odoo"
-declare -a args=("--test-tags" "$ODOO_TEST_TAGS" "--config" "$ODOO_CONF_FILE" "$@")
+declare -a args=("--test-tags" "$ODOO_TEST_TAGS" "--stop-after-init" "--config" "$ODOO_CONF_FILE" "$@")
 
 info "** Starting Odoo **"
 if am_i_root; then
