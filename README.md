@@ -84,6 +84,7 @@ cp -r ./$ODOO_MODULE_NAME $ODOO_VOLUME/addons/$ODOO_MODULE_NAME
 docker run -t --name odoo-test --env MODULES_TO_INSTALL=$ODOO_MODULE_NAME --env ODOO_TEST_TAGS=/$ODOO_MODULE_NAME --env ODOO_DATABASE_ADMIN_PASSWORD=bitnami --env ODOO_DATABASE_NAME=bitnami_odoo --env ODOO_DATABASE_USER=bn_odoo --env ODOO_DATABASE_PASSWORD=bitnami --env ODOO_DATABASE_HOST=odoo-test-postgresql --env ODOO_DATABASE_PORT_NUMBER=5432 --network odoo-test-network --volume $ODOO_VOLUME:/bitnami/odoo ghcr.io/craftschoolship/odoo-test:16.0.1-sat
 docker stop odoo-test-postgresql
 docker rm odoo-test-postgresql odoo-test
+docker network rm odoo-test-network
 ```
 ###### Usage
 1. Save this in same folder as your module
