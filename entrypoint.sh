@@ -38,14 +38,14 @@ fi
 cp -r /bitnami/testing/addons/* /bitnami/odoo/addons
 
 # Get the modules to install
-MODULES_TO_INSTALL=$(find /bitnami/odoo/addons -maxdepth 1 -type d -printf '%f,')
+MODULES_TO_INSTALL=$(find /bitnami/odoo/addons -mindepth 1 -maxdepth 1 -type d -printf '%f,')
 # Remove the trailing comma
 MODULES_TO_INSTALL=${MODULES_TO_INSTALL%,}
 
 # Get the test tags
-ODOO_TEST_TAGS=$(find /bitnami/odoo/addons -maxdepth 1 -type d -printf '/%f,')
+ODOO_TEST_TAGS=$(find /bitnami/odoo/addons -mindepth 1 -maxdepth 1 -type d -printf '/%f,')
 # Remove the trailing comma and wrap with quotes
-ODOO_TEST_TAGS="'${ODOO_TEST_TAGS%,}'"
+ODOO_TEST_TAGS="${ODOO_TEST_TAGS%,}"
 
 info "** Tests setup finished! **"
 
