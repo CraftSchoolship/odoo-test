@@ -104,5 +104,5 @@ export ODOO_VOLUME=path/to/odoo/volume
 ```
 4. Run the script
 ```sh
-./test.sh
+<sudo> ./test.sh
 ```
