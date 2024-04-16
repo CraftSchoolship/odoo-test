@@ -92,12 +92,16 @@ docker rm odoo-test-postgresql odoo-test
 ├── my_module
 └── test.sh
 ```
-2. Export the env variables
+2. Make the file executable
+```sh
+chmod ugao+x test.sh
+```
+3. Export the env variables
 ```sh
 export ODOO_MODULE_NAME=my_module
 export ODOO_VOLUME=path/to/odoo/volume
 ```
-3. Run the script
+4. Run the script
 ```sh
-sh ./test.sh
+./test.sh
 ```
