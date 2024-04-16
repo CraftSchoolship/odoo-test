@@ -5,7 +5,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  VERSION: '16.1.1-sat'
+  VERSION: '16.1.2-sat'
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
