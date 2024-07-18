@@ -3,6 +3,14 @@
 
 A Bitnami Odoo Container for running Odoo Tests
 
+## Update
+A new environment variable was added to the image, now you can add a custom shell script for setting up the test dependencies, i.e. installing pip libraries, apt packages and more...
+
+This can be done through the variable `SETUP_SHELL_SCRIPT` that takes raw shell (not a file), Example:
+```sh
+SETUP_SHELL_SCRIPT="/opt/bitnami/odoo/venv/bin/pip3 install redis"
+```
+
 ## Usage
 1. Create a network
 ```sh
@@ -28,7 +36,7 @@ docker run -t --name odoo-test \
   --env ODOO_DATABASE_PORT_NUMBER=5432 \
   --network odoo-test-network \
   --volume /path/to/odoo/addons:/bitnami/testing/addons \
-  ghcr.io/craftschoolship/odoo-test:16.1.2-sat
+  ghcr.io/craftschoolship/odoo-test:16.1.3-sat
 ```
 > **TODO** replace `/path/to/odoo/addons` with the path to the folder containing the modules you want to test
 
@@ -56,7 +64,7 @@ docker run -t --name odoo-test \
   --env ODOO_DATABASE_PORT_NUMBER=5432 \
   --network odoo-test-network \
   --volume .:/bitnami/testing/addons \
-  ghcr.io/craftschoolship/odoo-test:16.1.2-sat
+  ghcr.io/craftschoolship/odoo-test:16.1.3-sat
 
 # Clean docker resources
 docker stop odoo-test-postgresql
