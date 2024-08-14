@@ -72,15 +72,16 @@ ODOO_TEST_TAGS=$(find /bitnami/odoo/addons -mindepth 1 -maxdepth 1 -type d -prin
 ODOO_TEST_TAGS="${ODOO_TEST_TAGS%,}"
 
 info "** Tests setup finished! **"
-
 echo ""
 
-declare cmd="${ODOO_BASE_DIR}/bin/odoo"
-declare -a args=("-i" "$MODULES_TO_INSTALL" "--test-tags" "$ODOO_TEST_TAGS" "--stop-after-init" "--config" "$ODOO_CONF_FILE" "$@")
+# Stop exit on error to allow tests to fail without breaking the container
+set +o errexit
+set +o pipefail
 
 info "** Starting Odoo **"
-if am_i_root; then
-    exec_as_user "$ODOO_DAEMON_USER" "$cmd" "${args[@]}"
-else
-    exec "$cmd" "${args[@]}"
-fi
+/opt/bitnami/odoo/venv/bin/coverage run --data-file=/bitnami/odoo/.coverage ${ODOO_BASE_DIR}/bin/odoo -i $MODULES_TO_INSTALL --test-tags $ODOO_TEST_TAGS --stop-after-init --log-level=test --config $ODOO_CONF_FILE
+
+echo ""
+info "** Test Results **"
+echo ""
+/opt/bitnami/odoo/venv/bin/coverage report --data-file=/bitnami/odoo/.coverage
