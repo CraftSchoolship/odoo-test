@@ -79,7 +79,7 @@ set +o errexit
 set +o pipefail
 
 info "** Starting Odoo **"
-/opt/bitnami/odoo/venv/bin/coverage run --data-file=/bitnami/odoo/.coverage ${ODOO_BASE_DIR}/bin/odoo -i $MODULES_TO_INSTALL --test-tags $ODOO_TEST_TAGS --stop-after-init --log-level=test --config $ODOO_CONF_FILE
+/opt/bitnami/odoo/venv/bin/coverage run --data-file=/bitnami/odoo/.coverage --omit='/opt/*,*/tests/*' ${ODOO_BASE_DIR}/bin/odoo -i $MODULES_TO_INSTALL --test-tags $ODOO_TEST_TAGS --stop-after-init --log-level=test --config $ODOO_CONF_FILE
 
 echo ""
 info "** Test Results **"
