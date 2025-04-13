@@ -1,4 +1,4 @@
-FROM docker.io/bitnami/odoo:16
+FROM ghcr.io/craftschoolship/odoo:20250306-114213
 
 RUN /opt/bitnami/odoo/venv/bin/pip3 install coverage
 
