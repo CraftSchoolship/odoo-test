@@ -36,7 +36,7 @@ docker run -t --name odoo-test \
   --env ODOO_DATABASE_PORT_NUMBER=5432 \
   --network odoo-test-network \
   --volume /path/to/odoo/addons:/bitnami/testing/addons \
-  ghcr.io/craftschoolship/odoo-test:16.1.3-sat
+  ghcr.io/craftschoolship/odoo-test:16.2.0
 ```
 > **TODO** replace `/path/to/odoo/addons` with the path to the folder containing the modules you want to test
 
@@ -64,7 +64,7 @@ docker run -t --name odoo-test \
   --env ODOO_DATABASE_PORT_NUMBER=5432 \
   --network odoo-test-network \
   --volume .:/bitnami/testing/addons \
-  ghcr.io/craftschoolship/odoo-test:16.1.3-sat
+  ghcr.io/craftschoolship/odoo-test:16.2.0
 
 # Clean docker resources
 docker stop odoo-test-postgresql
